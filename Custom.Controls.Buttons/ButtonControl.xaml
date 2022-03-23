@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="Custom.Controls.Buttons.ButtonControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:c="clr-namespace:Custom.Controls.Buttons.Converters"
+             xmlns:buttons="clr-namespace:Custom.Controls.Buttons"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             MinWidth="160" Height="37">
+    <UserControl.Resources>
+        <c:ImageValueConverter x:Key="ImageConverter"/>
+        <system:Int32 x:Key="LoadValue">0</system:Int32>
+        <system:Int32 x:Key="EnterValue">1</system:Int32>
+        <system:Int32 x:Key="LeaveValue">2</system:Int32>
+        <system:Int32 x:Key="DisableValue">3</system:Int32>
+        <c:BoolToVisibilityConverter x:Key="VisibilityConverter"></c:BoolToVisibilityConverter>
+        <BitmapImage x:Key="SpImage" UriSource="Images/Sprite fit24px.png" />
+        <Style TargetType="buttons:ButtonControl">
+            <EventSetter Event="MouseEnter" Handler="OnMouseEnter"></EventSetter>
+            <EventSetter Event="MouseLeave" Handler="OnMouseLeave"></EventSetter>
+            <EventSetter Event="MouseLeftButtonDown" Handler="OnMouseLeftButtonDown"></EventSetter>
+            <EventSetter Event="MouseLeftButtonUp" Handler="OnMouseLeftButtonUp"></EventSetter>
+            <EventSetter Event="Loaded" Handler="OnLoaded"></EventSetter>
+        </Style>
+    </UserControl.Resources>
+    <Border x:Name="SpButton" Background="#FF272727" IsEnabledChanged="OnIsEnabledChanged" BorderBrush="Transparent" CornerRadius="4" BorderThickness="2,2,2,2" Focusable="True" IsEnabled="{Binding SpEnable, Mode=OneWay, RelativeSource={RelativeSource AncestorType=buttons:ButtonControl}}">
+        <Border.InputBindings>
+            <MouseBinding MouseAction="LeftClick" Command="{Binding SpCommand, RelativeSource={RelativeSource AncestorType=buttons:ButtonControl}}"/>
+        </Border.InputBindings>
+        <DockPanel>
+            <Canvas Width="47">
+                <Image Width="24" Height="24" Margin="10,5,1,1" Visibility="{Binding Normal, Converter={StaticResource VisibilityConverter}, RelativeSource={RelativeSource AncestorType=buttons:ButtonControl}}">
+                    <Image.Source>
+                        <MultiBinding Converter="{StaticResource ImageConverter}">
+                            <Binding Path="SpImageCategory" RelativeSource="{RelativeSource AncestorType=buttons:ButtonControl}"></Binding>
+                            <Binding Source="{StaticResource LoadValue}" ></Binding>
+                            <Binding Source="{StaticResource SpImage}"></Binding>
+                        </MultiBinding>
+                    </Image.Source>
+                </Image>
+                <Image Width="24" Height="24" Margin="10,5,1,1" Visibility="{Binding Hover, Converter={StaticResource VisibilityConverter}, RelativeSource={RelativeSource AncestorType=buttons:ButtonControl}}">
+                    <Image.Source>
+                        <MultiBinding Converter="{StaticResource ImageConverter}">
+                            <Binding Path="SpImageCategory" RelativeSource="{RelativeSource AncestorType=buttons:ButtonControl}"></Binding>
+                            <Binding Source="{StaticResource EnterValue}"></Binding>
+                            <Binding Source="{StaticResource SpImage}"></Binding>
+                        </MultiBinding>
+                    </Image.Source>
+                </Image>
+                <Image Width="24" Height="24" Margin="10,5,1,1" Visibility="{Binding Click, Converter={StaticResource VisibilityConverter}, RelativeSource={RelativeSource AncestorType=buttons:ButtonControl}}">
+                    <Image.Source>
+                        <MultiBinding Converter="{StaticResource ImageConverter}">
+                            <Binding Path="SpImageCategory" RelativeSource="{RelativeSource AncestorType=buttons:ButtonControl}"></Binding>
+                            <Binding Source="{StaticResource LeaveValue}"></Binding>
+                            <Binding Source="{StaticResource SpImage}"></Binding>
+                        </MultiBinding>
+                    </Image.Source>
+                </Image>
+                <Image Width="24" Height="24" Margin="10,5,1,1" Visibility="{Binding Disable, Converter={StaticResource VisibilityConverter}, RelativeSource={RelativeSource AncestorType=buttons:ButtonControl}}">
+                    <Image.Source>
+                        <MultiBinding Converter="{StaticResource ImageConverter}">
+                            <Binding Path="SpImageCategory" RelativeSource="{RelativeSource AncestorType=buttons:ButtonControl}"></Binding>
+                            <Binding Source="{StaticResource DisableValue}"></Binding>
+                            <Binding Source="{StaticResource SpImage}"></Binding>
+                        </MultiBinding>
+                    </Image.Source>
+                </Image>
+            </Canvas>
+            <TextBlock x:Name="SpControlText" Text="{Binding SpText, RelativeSource={RelativeSource AncestorType=buttons:ButtonControl}}" Foreground="White" FontSize="16" VerticalAlignment="Center"></TextBlock>
+        </DockPanel>
+    </Border>
+</UserControl>
+

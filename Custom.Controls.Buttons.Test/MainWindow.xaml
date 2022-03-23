@@ -1,0 +1,64 @@
+﻿<Window x:Class="Custom.Controls.Buttons.Test.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:b="clr-namespace:Custom.Controls.Buttons;assembly=Custom.Controls.Buttons"
+        Title="MainWindow" Height="800" Width="400"  Background="Black">
+    <Window.Resources>
+        <Style TargetType="StackPanel">
+            <Setter Property="Margin" Value="0,5,0,0"></Setter>
+        </Style>
+    </Window.Resources>
+    <StackPanel Margin="11">
+        <StackPanel>
+            <b:ButtonControl SpText="NEW PATIENT" SpImageCategory="NewPatient" SpEnable="True" SpCommand="{Binding MyCommand}"></b:ButtonControl>
+        </StackPanel>
+        <StackPanel>
+            <b:ButtonControl SpText="EDIT PATIENT" SpImageCategory="EditPatient" SpEnable="{Binding EditEnable}" SpCommand="{Binding LaunchCommand}"/>
+        </StackPanel>
+        <StackPanel>
+            <b:ButtonControl SpText="DELETE PATIENT" SpImageCategory="DeletePatient" SpEnable="True"></b:ButtonControl>
+        </StackPanel>
+        <StackPanel>
+            <b:ButtonControl SpText="IMPORT WORK" SpImageCategory="ImportWorkList" SpEnable="True"></b:ButtonControl>
+        </StackPanel>
+        <StackPanel>
+            <b:ButtonControl SpText="ANONYMIZE" SpImageCategory="Anonymize" SpEnable="{Binding AnonymizeEnable}"></b:ButtonControl>
+        </StackPanel>
+        <StackPanel>
+            <b:ButtonControl SpText="NEW STUDY" SpImageCategory="NewStudy" SpEnable="True"></b:ButtonControl>
+        </StackPanel>
+        <StackPanel>
+            <b:ButtonControl SpText="NEW SCAN" SpImageCategory="NewStudy" SpEnable="True"></b:ButtonControl>
+        </StackPanel>
+        <StackPanel>
+            <b:ButtonControl SpText="EDIT STUDY" SpImageCategory="EditStudy" SpEnable="True"></b:ButtonControl>
+        </StackPanel>
+        <StackPanel>
+            <b:ButtonControl SpText="DELETE STUDY" SpImageCategory="DeleteStudy" SpEnable="True"></b:ButtonControl>
+        </StackPanel>
+        <StackPanel>
+            <b:ButtonControl SpText="View" SpImageCategory="View" SpEnable="True"></b:ButtonControl>
+        </StackPanel>
+        <StackPanel>
+            <b:ButtonControl SpText="SAVE TO CD" SpImageCategory="SaveToCd" SpEnable="True"></b:ButtonControl>
+        </StackPanel>
+        <StackPanel>
+            <b:ButtonControl SpText="DELETE" SpImageCategory="DeleteReport" SpEnable="True"></b:ButtonControl>
+        </StackPanel>
+        <StackPanel>
+            <b:ButtonControl SpText="ARCHIVE" SpImageCategory="Archive" SpEnable="True"></b:ButtonControl>
+        </StackPanel>
+        <StackPanel>
+            <b:ButtonControl SpText="EXPORT LIST" SpImageCategory="ExportList" SpEnable="True"></b:ButtonControl>
+        </StackPanel>
+        <StackPanel>
+            <b:ButtonControl SpText="RESTORE" SpImageCategory="Restore"  SpEnable="True"></b:ButtonControl>
+        </StackPanel>
+        <StackPanel>
+            <b:ButtonControl SpText="Applications" SpImageCategory="Applications"  SpEnable="True"></b:ButtonControl>
+        </StackPanel>
+        <StackPanel>
+            <b:ButtonControl SpText="DATA QC" SpImageCategory="DataQc" SpEnable="True"></b:ButtonControl>
+        </StackPanel>
+    </StackPanel>
+</Window>
